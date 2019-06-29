@@ -146,8 +146,68 @@ SELECT e.employee_Id
 ;
 
 --6. 단일행 함수
+--1)CASE / 부서 인원 수에 따라 회식비가 다르다고 한다. 
+--3명 이내: 100, 6명 이내: 200, 10명 이상: 300
+--각 부서별 인원수에 따른 회식비를 구하시오 
+SELECT e.department_id 부서번호
+     , d.department_name 부서명 
+     , to_CHAR(CASE WHEN COUNT(e.department_id) <=3 THEN 100 
+                    WHEN COUNT(e.department_id) <=6 THEN 150 
+                    WHEN COUNT(e.department_id) >10 THEN 300  END, '$999')
+                AS 회식비
+  FROM employees e JOIN departments d ON e.dapartment_id = d.department_id 
+ GROUP BY e.department_id, d.department_name
+;
+--오류
+
+--부서별 인원수 구하기 -> 회식비 추가 
+SELECT e.department_id
+     , COUNT(e.department_id)
+     , to_CHAR(CASE WHEN COUNT(e.department_id) <=3 THEN 100 
+                    WHEN COUNT(e.department_id) <=6 THEN 150 
+                    WHEN COUNT(e.department_id) >10 THEN 300  END, '$999')
+                AS 회식비
+  FROM employees e
+ GROUP BY e.department_id
+ ORDER BY 회식비
+;
 
 --7.복수행 함수
+--1)부서별 직원들의 총 급여를 구하시오 
+--부서, 급여의 합 
+SELECT d.department_name
+     , SUM(e.salary)
+  FROM employees e JOIN departments d ON (e.department_id = d.department_id)
+ GROUP BY d.department_name
+;
+--2)부하직원이 가장 많은 사람은? 
+SELECT e1.first_name       상사
+     , COUNT(e.manager_id) 부하직원수
+  FROM employees e JOIN employees e1 ON (e.manager_id = e1.employee_id)
+ GROUP BY e1.first_name
+ HAVING COUNT(e.manager_id) = (SELECT MAX(COUNT(e.manager_id)) 
+                                FROM employees e JOIN employees e1 ON (e.manager_id = e1.employee_id)
+                               GROUP BY e1.first_name)
+;
+--3)직업별 최소급여가 가장 적은 부서는?
+--직업, 최소급여
+SELECT j.job_title
+     , j.min_salary
+  FROM jobs j
+ GROUP BY j.job_title, j.min_salary
+ HAVING j.min_salary = (SELECT MIN(j.min_salary)
+                        FROM jobs j)
+;
+
+--8. 조인 
+--1)EQUI-JOIN(or NON-EQUI JOIN)
+--2)OUTER-JOIN
+--3)SELF-JOIN
+
+--9. 서브쿼리 
+--1)
+--2)
+--3)
 
 
 
