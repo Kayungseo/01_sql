@@ -200,13 +200,57 @@ SELECT j.job_title
 ;
 
 --8. 조인 
---1)EQUI-JOIN(or NON-EQUI JOIN)
---2)OUTER-JOIN
---3)SELF-JOIN
+--1)EQUI-JOIN(or NON-EQUI JOIN) / 직원별 최소급여와 최대급여를 구하시오
+--직원 id, 최소 급여, 최대 급여
+SELECT e.employee_id
+     , j.min_salary
+     , j.max_salary
+  FROM employees e JOIN JOBS j ON (e.job_id = j.job_id)
+  ORDER BY j.min_salary DESC
+;
+--2)OUTER-JOIN / 모든 부서별 매니저 이름을 출력하시오(매니저가 없으면 '-'으로 나타내시오) 
+SELECT d.department_name                        "부서"
+     , NVL(TO_CHAR(e.manager_id), '-')       "매니저 번호"
+     , NVL(e1.first_name, '-')               "매니저 이름"
+  FROM departments d LEFT OUTER JOIN employees e ON (d.manager_id = e.manager_id) 
+                     LEFT OUTER JOIN employees e1 ON(e.manager_id = e1.employee_id)
+ GROUP BY d.department_name
+        , NVL(TO_CHAR(e.manager_id), '-')      
+        , NVL(e1.first_name, '-')
+ ORDER BY NVL(TO_CHAR(e.manager_id), '-') DESC        
+;
+
+--3)SELF-JOIN / 매니저 번호와 매니저 이름과 매니저의 직업을 구하시오 
+SELECT e1.employee_id       "매니저 번호"
+     , e1.first_name        "매니저 이름"
+     , j.job_title          "매니저 직업"
+  FROM employees e JOIN employees e1 ON e.manager_id = e1.employee_id
+                   JOIN jobs j ON e.job_id = j.job_id
+ GROUP BY e1.employee_id
+        , e1.first_name
+        , j.job_title
+ ORDER BY e1.employee_id
+;
 
 --9. 서브쿼리 
---1)
+--1) 매니저 중 가장 높은 급여를 받는 매니저의 번호와 이름과 급여를 출력하시오 
+
+SELECT w.manager_id
+     , w.first_name
+     , w.salary
+  FROM (SELECT e.manager_id
+             , e1.first_name
+             , e1.salary
+          FROM employees e JOIN employees e1 ON e.manager_id = e1.employee_id 
+         GROUP BY e.manager_id
+                , e1.first_name
+                , e1.salary) w
+ WHERE w.salary = (SELECT MAX(e1.salary)
+                     FROM employees e JOIN employees e1 ON e.manager_id = e1.employee_id)
+;
+
 --2)
+
 --3)
 
 
