@@ -451,11 +451,13 @@ CREATE TABLE MAIN_TABLE3
  
  ----------------------------------------------------
   GMEMBER 
+  
   ID        VARCHAR2(4)   PRIMARY KEY --회원의 아이디 M001, M002 
   NAME      VARCHAR2(15)  NOT NULL    --회원의 이름 
   
  ----------------------------------------------------
  MEMBER_GAME_HISTORY
+ 
  ID         VARCHAR2(4)   FK설정, FK이름 : FK_ID
                           GMEMBER 테이블의 ID 컬럼을 참조하도록 설정 
  YEAR       NUMBER(2)     --게임을 한 년도 
@@ -464,8 +466,37 @@ CREATE TABLE MAIN_TABLE3
                           
  ----------------------------------------------------
  -->JOIN QUERY 작성 
+ 
+*/
 
+CREATE TABLE GAME 
+(
+    GAME_CODE    NUMBER(2)        
+  , GAME_NAME    VARCHAR2(200)  NOT NULL
+  , CONSTRAINT PK_CODE PRIMARY KEY(GAME_CODE)
+);
  
+CREATE TABLE GMEMBER 
+(
+    ID  VARCHAR2(4) 
+  , NAME VARCHAR2(15)   NOT NULL
+  , CONSTRAINT PK_ID_GMEMBER PRIMARY KEY(ID)
+);
+
+CREATE TABLE MEMBER_GAME_HISTORY
+(
+    ID  VARCHAR2(4)
+  , YEAR NUMBER(4) 
+  , GAME_CODE NUMBER(2)
+  , CONSTRAINT FK_ID FOREIGN KEY(ID) REFERENCES GMEMBER(ID)
+  , CONSTRAINT FK_GAME_CODE FOREIGN KEY(GAME_CODE) REFERENCES GAME(GAME_CODE)
+);
  
- 
+SELECT h.id
+     , m.name
+     , h.year
+     , h.game_code
+  FROM game g JOIN member_game_history h ON (g.game_code = h.game_code)
+              JOIN gmember m             ON (m.id = h.id)
+;
  
