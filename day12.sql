@@ -1,123 +1,123 @@
 --day12 : DDL(Data Definition Language)
---        µ•¿Ã≈Õ ¡§¿«æÓ 
---1.≈◊¿Ã∫Ì¿ª ª˝º∫«œ¥¬ ∏Ì∑…æÓ =>≈◊¿Ã∫Ì¿∫ DBMS¿« OBJECT ¡ﬂ «œ≥™ 
---2.DBMS∞° OBJECT(∞¥√º)∑Œ ∞¸∏Æ/¿ŒΩƒ«œ¥¬ ¥ÎªÛ¿ª
---  ª˝º∫, ºˆ¡§, ªË¡¶«œ¥¬ ∏Ì∑…æÓ 
+--        Îç∞Ïù¥ÌÑ∞ Ï†ïÏùòÏñ¥ 
+--1.ÌÖåÏù¥Î∏îÏùÑ ÏÉùÏÑ±ÌïòÎäî Î™ÖÎ†πÏñ¥ =>ÌÖåÏù¥Î∏îÏùÄ DBMSÏùò OBJECT Ï§ë ÌïòÎÇò 
+--2.DBMSÍ∞Ä OBJECT(Í∞ùÏ≤¥)Î°ú Í¥ÄÎ¶¨/Ïù∏ÏãùÌïòÎäî ÎåÄÏÉÅÏùÑ
+--  ÏÉùÏÑ±, ÏàòÏ†ï, ÏÇ≠Ï†úÌïòÎäî Î™ÖÎ†πÏñ¥ 
 
---ª˝º∫ : CREATE
---ºˆ¡§ : ALTER
---ªË¡¶ : DROP
+--ÏÉùÏÑ± : CREATE
+--ÏàòÏ†ï : ALTER
+--ÏÇ≠Ï†ú : DROP
 
---vs. DML (Data Manipulation Language) µ•¿Ã≈Õ ¡∂¿€æÓ 
---ª˝º∫ : INSERT 
---ºˆ¡§ : UPDATE
---ªË¡¶ : DELETE
+--vs. DML (Data Manipulation Language) Îç∞Ïù¥ÌÑ∞ Ï°∞ÏûëÏñ¥ 
+--ÏÉùÏÑ± : INSERT 
+--ÏàòÏ†ï : UPDATE
+--ÏÇ≠Ï†ú : DELETE
 
 ----------------------------------------------------------------------
-/* DDL ±∏πÆ¿« Ω√¿€ 
+/* DDL Íµ¨Î¨∏Ïùò ÏãúÏûë 
 
-   CREATE | ALTER | DROP {∞¸∏Æ«“ ∞¥√º¿« ≈∏¿‘∏Ì}
+   CREATE | ALTER | DROP {Í¥ÄÎ¶¨Ìï† Í∞ùÏ≤¥Ïùò ÌÉÄÏûÖÎ™Ö}
 
-    DBMS¿« OBJECT(∞¥√º)¿« ¡æ∑˘ 
+    DBMSÏùò OBJECT(Í∞ùÏ≤¥)Ïùò Ï¢ÖÎ•ò 
     SHEMA, DOMAIN, TABLE, VIEW, INDEX, SEQUENCE, USER, DATABASE
 */
---meta : æÓ∂≤ ∞Õ¿« ø‰æ‡¡§∫∏(¡§∫∏µÈø° ¥Î«— ¡§∫∏), ex.emp ≈◊¿Ã∫Ìø° ¥Î«— º≥∏Ì, ∏ﬁ≈∏¿Œ¡ˆ-≥ª∞° ≥™ø° ¥Î«ÿº≠ æÀ∞Ì ¿÷≥ƒ 
+--meta : Ïñ¥Îñ§ Í≤ÉÏùò ÏöîÏïΩÏ†ïÎ≥¥(Ï†ïÎ≥¥Îì§Ïóê ÎåÄÌïú Ï†ïÎ≥¥), ex.emp ÌÖåÏù¥Î∏îÏóê ÎåÄÌïú ÏÑ§Î™Ö, Î©îÌÉÄÏù∏ÏßÄ-ÎÇ¥Í∞Ä ÎÇòÏóê ÎåÄÌï¥ÏÑú ÏïåÍ≥† ÏûàÎÉê 
 
---CREATE TABLE ±∏πÆ¿« ±∏¡∂ 
-CREATE TABLE ≈◊¿Ã∫Ì¿Ã∏ß
-(ƒ√∑≥1¿Ã∏ß µ•¿Ã≈Õ≈∏¿‘[(±Ê¿Ã)] [DEFAULT ±‚∫ª∞™] [ƒ√∑≥¿« ¡¶æ‡ªÁ«◊]
-[ƒ√∑≥2¿Ã∏ß µ•¿Ã≈Õ≈∏¿‘[(±Ê¿Ã)] [DEFAULT ±‚∫ª∞™] [ƒ√∑≥¿« ¡¶æ‡ªÁ«◊]]
+--CREATE TABLE Íµ¨Î¨∏Ïùò Íµ¨Ï°∞ 
+CREATE TABLE ÌÖåÏù¥Î∏îÏù¥Î¶Ñ
+(Ïª¨Îüº1Ïù¥Î¶Ñ Îç∞Ïù¥ÌÑ∞ÌÉÄÏûÖ[(Í∏∏Ïù¥)] [DEFAULT Í∏∞Î≥∏Í∞í] [Ïª¨ÎüºÏùò Ï†úÏïΩÏÇ¨Ìï≠]
+[Ïª¨Îüº2Ïù¥Î¶Ñ Îç∞Ïù¥ÌÑ∞ÌÉÄÏûÖ[(Í∏∏Ïù¥)] [DEFAULT Í∏∞Î≥∏Í∞í] [Ïª¨ÎüºÏùò Ï†úÏïΩÏÇ¨Ìï≠]]
 .....
-[ƒ√∑≥n¿Ã∏ß µ•¿Ã≈Õ≈∏¿‘[(±Ê¿Ã)] [DEFAULT ±‚∫ª∞™] [ƒ√∑≥¿« ¡¶æ‡ªÁ«◊]]
+[Ïª¨ÎüºnÏù¥Î¶Ñ Îç∞Ïù¥ÌÑ∞ÌÉÄÏûÖ[(Í∏∏Ïù¥)] [DEFAULT Í∏∞Î≥∏Í∞í] [Ïª¨ÎüºÏùò Ï†úÏïΩÏÇ¨Ìï≠]]
 );
 
 /*-------------------------
-ƒ√∑≥¿« ¡¶æ‡ªÁ«◊
+Ïª¨ÎüºÏùò Ï†úÏïΩÏÇ¨Ìï≠
 ---------------------------
-1. PRIMARY KEY : ¿Ã ƒ√∑≥ø° ¿‘∑¬µ«¥¬ ∞™¿∫ ¡ﬂ∫πµ«¡ˆ æ ∞Ì 
-                  «— «‡¿ª Ωƒ∫∞«“ ºˆ ¿÷¥¬ ∞™¿∏∑Œ º≥¡§«ÿæﬂ «œ∏Á
-                  NULL µ•¿Ã≈Õ ¿‘∑¬¿∫ ∫“∞°¥…«— ∞™¿ÃæÓæﬂ «—¥Ÿ. 
+1. PRIMARY KEY : Ïù¥ Ïª¨ÎüºÏóê ÏûÖÎ†•ÎêòÎäî Í∞íÏùÄ Ï§ëÎ≥µÎêòÏßÄ ÏïäÍ≥† 
+                  Ìïú ÌñâÏùÑ ÏãùÎ≥ÑÌï† Ïàò ÏûàÎäî Í∞íÏúºÎ°ú ÏÑ§Ï†ïÌï¥Ïïº ÌïòÎ©∞
+                  NULL Îç∞Ïù¥ÌÑ∞ ÏûÖÎ†•ÏùÄ Î∂àÍ∞ÄÎä•Ìïú Í∞íÏù¥Ïñ¥Ïïº ÌïúÎã§. 
                   
-2. FOREIGN KEY : ¡÷∑Œ JOINø° ªÁøÎµ«¥¬ ¡¶æ‡¡∂∞«¿∏∑Œ 
-                 ¥Ÿ∏• ≈◊¿Ã∫Ì¿« PRIMARY KEY∑Œ ªÁøÎµ«æ˙¥¯ ∞™¿Ã 
-                 µÓ¿Â«ÿæﬂ∏∏ «—¥Ÿ. 
+2. FOREIGN KEY : Ï£ºÎ°ú JOINÏóê ÏÇ¨Ïö©ÎêòÎäî Ï†úÏïΩÏ°∞Í±¥ÏúºÎ°ú 
+                 Îã§Î•∏ ÌÖåÏù¥Î∏îÏùò PRIMARY KEYÎ°ú ÏÇ¨Ïö©ÎêòÏóàÎçò Í∞íÏù¥ 
+                 Îì±Ïû•Ìï¥ÏïºÎßå ÌïúÎã§. 
                  
-3. UNIQUE      : ¿Ã ƒ√∑≥ø° ¿‘∑¬µ«¥¬ ∞™¿∫ ¡ﬂ∫πµ«¡ˆ æ ¿Ω¿ª ∫∏¿Â«ÿæﬂ «—¥Ÿ. 
-                 NULLµ•¿Ã≈Õ ¿‘∑¬¿∫ ∞°¥…«œ¥Ÿ.
-                 ==>µ•¿Ã≈Õ∞° NULL(æ¯¿Ω) ¿Ã∞≈≥™ 
-                    NULL¿Ã æ∆¥œ∏È π›µÂΩ√ ¿Ø¿œ«— ∞™¿ÃæÓæﬂ «‘.
+3. UNIQUE      : Ïù¥ Ïª¨ÎüºÏóê ÏûÖÎ†•ÎêòÎäî Í∞íÏùÄ Ï§ëÎ≥µÎêòÏßÄ ÏïäÏùåÏùÑ Î≥¥Ïû•Ìï¥Ïïº ÌïúÎã§. 
+                 NULLÎç∞Ïù¥ÌÑ∞ ÏûÖÎ†•ÏùÄ Í∞ÄÎä•ÌïòÎã§.
+                 ==>Îç∞Ïù¥ÌÑ∞Í∞Ä NULL(ÏóÜÏùå) Ïù¥Í±∞ÎÇò 
+                    NULLÏù¥ ÏïÑÎãàÎ©¥ Î∞òÎìúÏãú Ïú†ÏùºÌïú Í∞íÏù¥Ïñ¥Ïïº Ìï®.
                     
-4. NOT NULL    : ¿Ã ƒ√∑≥ø° ¿‘∑¬µ«¥¬ ∞™¿∫ ¡ﬂ∫π¿∫ ªÛ∞¸æ¯¿∏≥™
-                 NULL ªÛ≈¬¥¬ µ«¡ˆ æ µµ∑œ ∫∏¿Â«—¥Ÿ. 
+4. NOT NULL    : Ïù¥ Ïª¨ÎüºÏóê ÏûÖÎ†•ÎêòÎäî Í∞íÏùÄ Ï§ëÎ≥µÏùÄ ÏÉÅÍ¥ÄÏóÜÏúºÎÇò
+                 NULL ÏÉÅÌÉúÎäî ÎêòÏßÄ ÏïäÎèÑÎ°ù Î≥¥Ïû•ÌïúÎã§. 
                  
-==>PK = UNIQUE + NOT NULL ¡∂«’µ» «¸≈¬∂Û¥¬ ∞Õ¿ª æÀ ºˆ ¿÷¥Ÿ. 
+==>PK = UNIQUE + NOT NULL Ï°∞Ìï©Îêú ÌòïÌÉúÎùºÎäî Í≤ÉÏùÑ Ïïå Ïàò ÏûàÎã§. 
 */
 
---øπ)√ª«ÿ¡¯ ¥Î«– ±∏º∫¿Œø¯ ¡§∫∏∏¶ ¿˙¿Â«“ ≈◊¿Ã∫Ì¿ª ¡§¿« 
+--Ïòà)Ï≤≠Ìï¥ÏßÑ ÎåÄÌïô Íµ¨ÏÑ±Ïù∏Ïõê Ï†ïÎ≥¥Î•º Ï†ÄÏû•Ìï† ÌÖåÏù¥Î∏îÏùÑ Ï†ïÏùò 
 /*
-  ≈◊¿Ã∫Ì ¿Ã∏ß : member
-  1. ∏‚πˆæ∆¿Ãµ      : member_id        :πÆ¿⁄   :VARCHAR2  :PK
-  2. ∏‚πˆ¿Ã∏ß        : member_name      :πÆ¿⁄   :VARCHAR2  :NOT NULL
-  3. ¿¸»≠π¯»£ µﬁ¿⁄∏Æ  : phone           :πÆ¿⁄    :VARCHAR2
-  4. Ω√Ω∫≈€µÓ∑œ¿œ     : reg_date        :≥Ø¬•    :DATE
-  5. ªÁ¥¬ ∞˜         : address         :πÆ¿⁄    :VARCHAR2
-  6. ¡¡æ∆«œ¥¬ º˝¿⁄    : like_number     :º˝¿⁄    :NUMBER
-  7. ¿¸∞¯            : major           :πÆ¿⁄    :VARCHAR2
+  ÌÖåÏù¥Î∏î Ïù¥Î¶Ñ : member
+  1. Î©§Î≤ÑÏïÑÏù¥Îîî      : member_id        :Î¨∏Ïûê   :VARCHAR2  :PK
+  2. Î©§Î≤ÑÏù¥Î¶Ñ        : member_name      :Î¨∏Ïûê   :VARCHAR2  :NOT NULL
+  3. Ï†ÑÌôîÎ≤àÌò∏ Îí∑ÏûêÎ¶¨  : phone           :Î¨∏Ïûê    :VARCHAR2
+  4. ÏãúÏä§ÌÖúÎì±Î°ùÏùº     : reg_date        :ÎÇ†Ïßú    :DATE
+  5. ÏÇ¨Îäî Í≥≥         : address         :Î¨∏Ïûê    :VARCHAR2
+  6. Ï¢ãÏïÑÌïòÎäî Ïà´Ïûê    : like_number     :Ïà´Ïûê    :NUMBER
+  7. Ï†ÑÍ≥µ            : major           :Î¨∏Ïûê    :VARCHAR2
 */
 
---1.≈◊¿Ã∫Ì ª˝º∫ ±∏πÆ : member
+--1.ÌÖåÏù¥Î∏î ÏÉùÏÑ± Íµ¨Î¨∏ : member
 CREATE TABLE member 
 ( member_id     VARCHAR2(4)   PRIMARY KEY 
  ,member_name   VARCHAR2(15)  NOT NULL
- ,phone         VARCHAR2(4)   --NULL «„øÎ«œ∑¡∏È ¡¶æ‡¡∂∞« æ»æ≤∏È µ»¥Ÿ
+ ,phone         VARCHAR2(4)   --NULL ÌóàÏö©ÌïòÎ†§Î©¥ Ï†úÏïΩÏ°∞Í±¥ ÏïàÏì∞Î©¥ ÎêúÎã§
  ,reg_date      DATE          DEFAULT sysdate
  ,address       VARCHAR2(30)  
  ,like_number   NUMBER
  ,major         VARCHAR2(50)  
 );
 
---2.≈◊¿Ã∫Ì ªË¡¶ ±∏πÆ 
-DROP TABLE ≈◊¿Ã∫Ì ¿Ã∏ß;
+--2.ÌÖåÏù¥Î∏î ÏÇ≠Ï†ú Íµ¨Î¨∏ 
+DROP TABLE ÌÖåÏù¥Î∏î Ïù¥Î¶Ñ;
 
 DROP TABLE member;
 
---3. ≈◊¿Ã∫Ì ºˆ¡§ ±∏πÆ 
+--3. ÌÖåÏù¥Î∏î ÏàòÏ†ï Íµ¨Î¨∏ 
 /*-----------------------
-  ºˆ¡§¿« ¡æ∑˘
+  ÏàòÏ†ïÏùò Ï¢ÖÎ•ò
   -----------------------
-  1. ƒ√∑≥¿ª √ﬂ∞° : ADD 
-  2. ƒ√∑≥¿ª ºˆ¡§ : MODIFY
-  3. ƒ√∑≥¿ª ªË¡¶ : DROP COLUMN
+  1. Ïª¨ÎüºÏùÑ Ï∂îÍ∞Ä : ADD 
+  2. Ïª¨ÎüºÏùÑ ÏàòÏ†ï : MODIFY
+  3. Ïª¨ÎüºÏùÑ ÏÇ≠Ï†ú : DROP COLUMN
   ------------------------
 */
-ALTER TABLE ≈◊¿Ã∫Ì¿Ã∏ß {ADD | MODIFY | DROP COLUMN}.... ;
---øπ) ª˝º∫«— member ≈◊¿Ã∫Ìø° ƒ√∑≥ 2∞≥∏¶ √ﬂ∞° 
--- √‚ª˝ ø˘ : birth_month : NUMBER
--- º∫∫∞    : gender      : VARCHAR2(1) : F,M µŒ ±€¿⁄ ¡ﬂ «œ≥™∏∏ ¿‘∑¬∞°¥…«œµµ∑œ 
+ALTER TABLE ÌÖåÏù¥Î∏îÏù¥Î¶Ñ {ADD | MODIFY | DROP COLUMN}.... ;
+--Ïòà) ÏÉùÏÑ±Ìïú member ÌÖåÏù¥Î∏îÏóê Ïª¨Îüº 2Í∞úÎ•º Ï∂îÍ∞Ä 
+-- Ï∂úÏÉù Ïõî : birth_month : NUMBER
+-- ÏÑ±Î≥Ñ    : gender      : VARCHAR2(1) : F,M Îëê Í∏ÄÏûê Ï§ë ÌïòÎÇòÎßå ÏûÖÎ†•Í∞ÄÎä•ÌïòÎèÑÎ°ù 
 
 --1)ADD 
---member table ª˝º∫ »ƒ æ∆∑° ±∏πÆ Ω««‡ 
+--member table ÏÉùÏÑ± ÌõÑ ÏïÑÎûò Íµ¨Î¨∏ Ïã§Ìñâ 
 ALTER TABLE member ADD
 ( birth_month NUMBER
-, gender      VARCHAR2(1) CHECK (gender IN ('F', 'M')) --where ¡∂∞«¿˝ø° µÈæÓ∞• ºˆ ¿÷¥¬ «¸≈¬
+, gender      VARCHAR2(1) CHECK (gender IN ('F', 'M')) --where Ï°∞Í±¥Ï†àÏóê Îì§Ïñ¥Í∞à Ïàò ÏûàÎäî ÌòïÌÉú
 );
---TABLE MEMBER∞° ∫Ø∞Êµ«æ˙Ω¿¥œ¥Ÿ.
+--TABLE MEMBERÍ∞Ä Î≥ÄÍ≤ΩÎêòÏóàÏäµÎãàÎã§.
 
 --2.MODIFY 
---øπ) √‚ª˝ ø˘ ƒ√∑≥¿ª º˝¿⁄2 ¿⁄∏Æ±Ó¡ˆ∏∏ ¡¶«—«œµµ∑œ ºˆ¡§ 
-ALTER TABLE ≈◊¿Ã∫Ì¿Ã∏ß MODIFY ƒ√∑≥¿Ã∏ß µ•¿Ã≈Õ≈∏¿‘(≈©±‚);
+--Ïòà) Ï∂úÏÉù Ïõî Ïª¨ÎüºÏùÑ Ïà´Ïûê2 ÏûêÎ¶¨ÍπåÏßÄÎßå Ï†úÌïúÌïòÎèÑÎ°ù ÏàòÏ†ï 
+ALTER TABLE ÌÖåÏù¥Î∏îÏù¥Î¶Ñ MODIFY Ïª¨ÎüºÏù¥Î¶Ñ Îç∞Ïù¥ÌÑ∞ÌÉÄÏûÖ(ÌÅ¨Í∏∞);
 ALTER TABLE member MODIFY birth_month NUMBER(2);
 
 --3)DROP COLUMN
---øπ) ºˆ¡§«— ≈◊¿Ã∫Ì member ø°º≠ like_number ƒ√∑≥ ªË¡¶ 
-ALTER TABLE ≈◊¿Ã∫Ì¿Ã∏ß DROP COULMN ƒ√∑≥¿Ã∏ß;
+--Ïòà) ÏàòÏ†ïÌïú ÌÖåÏù¥Î∏î member ÏóêÏÑú like_number Ïª¨Îüº ÏÇ≠Ï†ú 
+ALTER TABLE ÌÖåÏù¥Î∏îÏù¥Î¶Ñ DROP COULMN Ïª¨ÎüºÏù¥Î¶Ñ;
 ALTER TABLE member DROP COLUMN like_number;
---Table MEMBER¿Ã(∞°) ∫Ø∞Êµ«æ˙Ω¿¥œ¥Ÿ.
---øπ∑Œ ªÁøÎ«“ member ≈◊¿Ã∫Ì¿« √÷¡æ«¸≈¬
+--Table MEMBERÏù¥(Í∞Ä) Î≥ÄÍ≤ΩÎêòÏóàÏäµÎãàÎã§.
+--ÏòàÎ°ú ÏÇ¨Ïö©Ìï† member ÌÖåÏù¥Î∏îÏùò ÏµúÏ¢ÖÌòïÌÉú
 CREATE TABLE member 
 ( member_id     VARCHAR2(4)   PRIMARY KEY 
  ,member_name   VARCHAR2(15)  NOT NULL
- ,phone         VARCHAR2(4)   --NULL «„øÎ«œ∑¡∏È ¡¶æ‡¡∂∞« æ»æ≤∏È µ»¥Ÿ
+ ,phone         VARCHAR2(4)   --NULL ÌóàÏö©ÌïòÎ†§Î©¥ Ï†úÏïΩÏ°∞Í±¥ ÏïàÏì∞Î©¥ ÎêúÎã§
  ,reg_date      DATE          DEFAULT sysdate
  ,address       VARCHAR2(30)  
  ,like_number   NUMBER
@@ -126,47 +126,47 @@ CREATE TABLE member
  ,gender        VARCHAR2(1)   CHECK (gender IN ('F', 'M'))
 );
 
--- ∞°¿Â ¥‹º¯»≠µ» ≈◊¿Ã∫Ì ¡§¿« ±∏πÆ 
--- ¡¶æ‡¡∂∞«¿ª ∞¢ ƒ√∑≥ µ⁄ø° πŸ∑Œ ¡¶æ‡¡∂∞« ¿Ã∏ßæ¯¿Ã ª˝º∫ 
+-- Í∞ÄÏû• Îã®ÏàúÌôîÎêú ÌÖåÏù¥Î∏î Ï†ïÏùò Íµ¨Î¨∏ 
+-- Ï†úÏïΩÏ°∞Í±¥ÏùÑ Í∞Å Ïª¨Îüº Îí§Ïóê Î∞îÎ°ú Ï†úÏïΩÏ°∞Í±¥ Ïù¥Î¶ÑÏóÜÏù¥ ÏÉùÏÑ± 
 
--- ¡¶æ‡¡∂∞«ø° ¿Ã∏ß¿ª ∫Œø©«ÿº≠ ª˝º∫ : 
--- ƒ√∑≥¿« ¡§¿«∞° ≥°≥≠ µ⁄ ¡¶æ‡¡∂∞« ¡§¿«∏¶ ∏Ùæ∆º≠ ¿€º∫ 
+-- Ï†úÏïΩÏ°∞Í±¥Ïóê Ïù¥Î¶ÑÏùÑ Î∂ÄÏó¨Ìï¥ÏÑú ÏÉùÏÑ± : 
+-- Ïª¨ÎüºÏùò Ï†ïÏùòÍ∞Ä ÎÅùÎÇú Îí§ Ï†úÏïΩÏ°∞Í±¥ Ï†ïÏùòÎ•º Î™∞ÏïÑÏÑú ÏûëÏÑ± 
 
 
--- ≈◊¿Ã∫Ì ªË¡¶
+-- ÌÖåÏù¥Î∏î ÏÇ≠Ï†ú
  DROP TABLE member;
- --Table MEMBER¿Ã(∞°) ªË¡¶µ«æ˙Ω¿¥œ¥Ÿ.
+ --Table MEMBERÏù¥(Í∞Ä) ÏÇ≠Ï†úÎêòÏóàÏäµÎãàÎã§.
  
--- ¡¶æ‡¡∂∞« ¿Ã∏ß¿ª ¡÷æÓ member ≈◊¿Ã∫Ì ª˝º∫ 
--- , CONSTRAINT  ¡¶æ‡¡∂∞«¿Ã∏ß ¡¶æ‡¡∂∞«≈∏¿‘ (¡¶æ‡¡∂∞« ¿˚øÎ¥ÎªÛ ƒ√∑≥)
+-- Ï†úÏïΩÏ°∞Í±¥ Ïù¥Î¶ÑÏùÑ Ï£ºÏñ¥ member ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
+-- , CONSTRAINT  Ï†úÏïΩÏ°∞Í±¥Ïù¥Î¶Ñ Ï†úÏïΩÏ°∞Í±¥ÌÉÄÏûÖ (Ï†úÏïΩÏ°∞Í±¥ Ï†ÅÏö©ÎåÄÏÉÅ Ïª¨Îüº)
 CREATE TABLE member
 (  member_id    VARCHAR2(4)  
  , member_name  VARCHAR2(15)    NOT NULL
- , phone        VARCHAR2(4)     -- NULL «„øÎ«œ∑¡∏È ¡¶æ‡¡∂∞«¿ª æ»æ≤∏È µ»¥Ÿ.
+ , phone        VARCHAR2(4)     -- NULL ÌóàÏö©ÌïòÎ†§Î©¥ Ï†úÏïΩÏ°∞Í±¥ÏùÑ ÏïàÏì∞Î©¥ ÎêúÎã§.
  , reg_date     DATE            DEFAULT sysdate
  , address      VARCHAR2(30) 
  , major        VARCHAR2(50)
  , birth_month  NUMBER(2)
  , gender       VARCHAR2(1)     
--- , CONSTRAINT  ¡¶æ‡¡∂∞«¿Ã∏ß ¡¶æ‡¡∂∞«≈∏¿‘ (¡¶æ‡¡∂∞« ¿˚øÎ¥ÎªÛ ƒ√∑≥)
+-- , CONSTRAINT  Ï†úÏïΩÏ°∞Í±¥Ïù¥Î¶Ñ Ï†úÏïΩÏ°∞Í±¥ÌÉÄÏûÖ (Ï†úÏïΩÏ°∞Í±¥ Ï†ÅÏö©ÎåÄÏÉÅ Ïª¨Îüº)
  , CONSTRAINT pk_member         PRIMARY KEY (member_id)
  , CONSTRAINT ck_member_gender  CHECK       (gender IN ('M', 'F'))
 );
 
---≈◊¿Ã∫Ì ª˝º∫Ω√ DDL∑Œ ¡§¿««— ≥ªøÎ¿∫ Ω√Ω∫≈€ ƒ´≈ª∑Œ±◊ø° ¿˙¿Âµ  
+--ÌÖåÏù¥Î∏î ÏÉùÏÑ±Ïãú DDLÎ°ú Ï†ïÏùòÌïú ÎÇ¥Ïö©ÏùÄ ÏãúÏä§ÌÖú Ïπ¥ÌÉàÎ°úÍ∑∏Ïóê Ï†ÄÏû•Îê® 
 --user_tables, user_constraints 
---µŒ ∞≥¿« Ω√Ω∫≈€ ƒ´≈ª∑Œ±◊ ≈◊¿Ã∫Ì¿ª ¡∂»∏ 
+--Îëê Í∞úÏùò ÏãúÏä§ÌÖú Ïπ¥ÌÉàÎ°úÍ∑∏ ÌÖåÏù¥Î∏îÏùÑ Ï°∞Ìöå 
 
---1)µŒ ≈◊¿Ã∫Ì¿« «¸≈¬(ƒ√∑≥ ¿Ã∏ß) ¡∂»∏ 
+--1)Îëê ÌÖåÏù¥Î∏îÏùò ÌòïÌÉú(Ïª¨Îüº Ïù¥Î¶Ñ) Ï°∞Ìöå 
 DESC user_tables;
 DESC user_constraints
 /*
-¿Ã∏ß                        ≥Œ?       ¿Ø«¸             
+Ïù¥Î¶Ñ                        ÎÑê?       Ïú†Ìòï             
 ------------------------- -------- -------------- 
 */
 
  SELECT t.table_name
-   FROM user_tables t --Ω√Ω∫≈€ ƒ´≈ª∑Œ±◊ 
+   FROM user_tables t --ÏãúÏä§ÌÖú Ïπ¥ÌÉàÎ°úÍ∑∏ 
 ;
 /*
 TABLE_NAME
@@ -195,7 +195,7 @@ PK_MEMBER	        P	MEMBER
 SYS_C007911	        C	MEMBER
 */
 
---member table¿« ¡¶æ‡¡∂∞«∏∏ »Æ¿Œ 
+--member tableÏùò Ï†úÏïΩÏ°∞Í±¥Îßå ÌôïÏù∏ 
 SELECT c.constraint_name
      , c.constraint_type
      , c.table_name
@@ -208,8 +208,8 @@ CK_MEMBER_GENDER	C	MEMBER
 PK_MEMBER	        P	MEMBER
 */
 
---user_objects : «ˆ¿Á ªÁøÎ¿⁄∞° ∞°¡ˆ∞Ì ¿÷¥¬ objectµÈ¿« ¡§∫∏∞° ¿˙¿Âµ«¥¬ 
---               Ω√Ω∫≈€ ƒ´≈ª∑Œ±◊ ≈◊¿Ã∫Ì 
+--user_objects : ÌòÑÏû¨ ÏÇ¨Ïö©ÏûêÍ∞Ä Í∞ÄÏßÄÍ≥† ÏûàÎäî objectÎì§Ïùò Ï†ïÎ≥¥Í∞Ä Ï†ÄÏû•ÎêòÎäî 
+--               ÏãúÏä§ÌÖú Ïπ¥ÌÉàÎ°úÍ∑∏ ÌÖåÏù¥Î∏î 
 DESC user_objects;
 SELECT o.object_name
      , o.object_id
@@ -217,7 +217,7 @@ SELECT o.object_name
   FROM user_objects o 
 ;
 /*
-PK_MEMBER	75097	INDEX --∏Ò¬˜(µ•¿Ã≈Õ ∫¸∏£∞‘ √£æ∆∞• ºˆ ¿÷µµ∑œ)
+PK_MEMBER	75097	INDEX --Î™©Ï∞®(Îç∞Ïù¥ÌÑ∞ Îπ†Î•¥Í≤å Ï∞æÏïÑÍ∞à Ïàò ÏûàÎèÑÎ°ù)
 MEMBER	    75096	TABLE
 PK_DEPT	    74219	INDEX
 DEPT	    74218	TABLE
@@ -227,27 +227,27 @@ BONUS	    74222	TABLE
 SALGRADE	74223	TABLE
 */
 
---≈◊¿Ã∫Ì ª˝º∫ ±‚π˝ ¡ﬂ ¿ÃπÃ ¡∏¿Á«œ¥¬ ≈◊¿Ã∫Ì∑Œ∫Œ≈Õ ∫πªÁ ª˝º∫ 
---≈◊¿Ã∫Ì ∫πªÁ ª˝º∫ ±∏πÆ
-CREATE TABLE ≈◊¿Ã∫Ì¿Ã∏ß 
+--ÌÖåÏù¥Î∏î ÏÉùÏÑ± Í∏∞Î≤ï Ï§ë Ïù¥ÎØ∏ Ï°¥Ïû¨ÌïòÎäî ÌÖåÏù¥Î∏îÎ°úÎ∂ÄÌÑ∞ Î≥µÏÇ¨ ÏÉùÏÑ± 
+--ÌÖåÏù¥Î∏î Î≥µÏÇ¨ ÏÉùÏÑ± Íµ¨Î¨∏
+CREATE TABLE ÌÖåÏù¥Î∏îÏù¥Î¶Ñ 
 AS 
-SELECT ƒ√∑≥¿Ã∏ß...
-  FROM ∫πªÁ¥ÎªÛ ≈◊¿Ã∫Ì 
- WHERE «◊ªÛ ∞≈¡˛¿Ã µ«¥¬ ¡∂∞« 
+SELECT Ïª¨ÎüºÏù¥Î¶Ñ...
+  FROM Î≥µÏÇ¨ÎåÄÏÉÅ ÌÖåÏù¥Î∏î 
+ WHERE Ìï≠ÏÉÅ Í±∞ÏßìÏù¥ ÎêòÎäî Ï°∞Í±¥ 
 ;
 
---øπ)æ’º≠ ª˝º∫«— member tableø°º≠ ∫πªÁ : new_member 
+--Ïòà)ÏïûÏÑú ÏÉùÏÑ±Ìïú member tableÏóêÏÑú Î≥µÏÇ¨ : new_member 
 CREATE TABLE new_member
 AS 
 SELECT m.*
   FROM member m
- WHERE 1=2 --«◊ªÛ ∞≈¡˛¿Ã µ«¥¬ ¡∂∞«
+ WHERE 1=2 --Ìï≠ÏÉÅ Í±∞ÏßìÏù¥ ÎêòÎäî Ï°∞Í±¥
 ;
--- pkº≥¡§¿∫ ∫πªÁµ«¡ˆ æ ∞Ì ≈◊¿Ã∫Ì ±∏¡∂(¡∂»∏µ» ƒ√∑≥∏∏) ∫πªÁµ  
--- new_member ≈◊¿Ã∫Ì¿« ±∏¡∂ ¡∂»∏
+-- pkÏÑ§Ï†ïÏùÄ Î≥µÏÇ¨ÎêòÏßÄ ÏïäÍ≥† ÌÖåÏù¥Î∏î Íµ¨Ï°∞(Ï°∞ÌöåÎêú Ïª¨ÎüºÎßå) Î≥µÏÇ¨Îê® 
+-- new_member ÌÖåÏù¥Î∏îÏùò Íµ¨Ï°∞ Ï°∞Ìöå
 DESC new_member;
 /*
-∏ß          ≥Œ?       ¿Ø«¸           
+Î¶Ñ          ÎÑê?       Ïú†Ìòï           
 ----------- -------- ------------ 
 MEMBER_ID            VARCHAR2(4)  
 MEMBER_NAME NOT NULL VARCHAR2(15) 
@@ -259,15 +259,15 @@ MAJOR                VARCHAR2(50)
 BIRTH_MONTH          NUMBER(2)    
 GENDER               VARCHAR2(1)  
 */
-INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M001', 'π⁄º∫«˘', '9155', 'ºˆø¯Ω√', '«‡¡§', '3', 'M');
-INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M002', 'ø¿¡¯ø¿', '1418', '±∫∆˜Ω√', '¿œæÓ', '1', 'M');
-INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M003', '¿Ã∫¥«ˆ', '0186', '√µæ»Ω√', 'ƒƒ∞¯', '3', 'M');
-INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M004', '±ËπÆ¡§', '1392', '√ª¡÷Ω√', '¿œæÓ', '3', 'F');
-INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M005', 'º€¡ˆ»Ø', '0322', 'æ»æÁΩ√', '¡¶æ‡', '3', 'F');
+INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M001', 'Î∞ïÏÑ±Ìòë', '9155', 'ÏàòÏõêÏãú', 'ÌñâÏ†ï', '3', 'M');
+INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M002', 'Ïò§ÏßÑÏò§', '1418', 'Íµ∞Ìè¨Ïãú', 'ÏùºÏñ¥', '1', 'M');
+INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M003', 'Ïù¥Î≥ëÌòÑ', '0186', 'Ï≤úÏïàÏãú', 'Ïª¥Í≥µ', '3', 'M');
+INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M004', 'ÍπÄÎ¨∏Ï†ï', '1392', 'Ï≤≠Ï£ºÏãú', 'ÏùºÏñ¥', '3', 'F');
+INSERT INTO "SCOTT"."MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) VALUES ('M005', 'ÏÜ°ÏßÄÌôò', '0322', 'ÏïàÏñëÏãú', 'Ï†úÏïΩ', '3', 'F');
 COMMIT;
 
 
---3ø˘ª˝¿« ¡§∫∏∏∏ ∫πªÁ«ÿº≠ ªı ≈◊¿Ã∫Ì ª˝º∫ 
+--3ÏõîÏÉùÏùò Ï†ïÎ≥¥Îßå Î≥µÏÇ¨Ìï¥ÏÑú ÏÉà ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 CREATE TABLE march_member
 AS
 SELECT m.* 
@@ -275,97 +275,97 @@ SELECT m.*
  WHERE m.birth_month = 3
 ;
 
---∫πªÁ«œø© ≈◊¿Ã∫Ì ª˝º∫Ω√ ¬¸¿Ã µ… ºˆ ¿÷¥¬ ¡∂∞«¿ª ¡÷∏È 
---«ÿ¥Á ¡∂∞«¿ª ∏∏¡∑«œ¥¬ «‡¿« µ•¿Ã≈Õ±Ó¡ˆ ∫πªÁµ«∏Èº≠ ≈◊¿Ã∫Ì ª˝º∫ 
+--Î≥µÏÇ¨ÌïòÏó¨ ÌÖåÏù¥Î∏î ÏÉùÏÑ±Ïãú Ï∞∏Ïù¥ Îê† Ïàò ÏûàÎäî Ï°∞Í±¥ÏùÑ Ï£ºÎ©¥ 
+--Ìï¥Îãπ Ï°∞Í±¥ÏùÑ ÎßåÏ°±ÌïòÎäî ÌñâÏùò Îç∞Ïù¥ÌÑ∞ÍπåÏßÄ Î≥µÏÇ¨ÎêòÎ©¥ÏÑú ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 
---«◊ªÛ ¬¸¿Ã µ«¥¬ ¡∂∞«¿ª ¡÷∏È ∏µÁ µ•¿Ã≈Õ∏¶ ∫πªÁ«œ∏Èº≠ ≈◊¿Ã∫Ì ª˝º∫ 
+--Ìï≠ÏÉÅ Ï∞∏Ïù¥ ÎêòÎäî Ï°∞Í±¥ÏùÑ Ï£ºÎ©¥ Î™®Îì† Îç∞Ïù¥ÌÑ∞Î•º Î≥µÏÇ¨ÌïòÎ©¥ÏÑú ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
 CREATE TABLE full_member
 AS
 SELECT m.* 
   FROM member m
  WHERE 1=1
 ;
---full_member ªË¡¶ 
+--full_member ÏÇ≠Ï†ú 
 DROP TABLE full_member;
 CREATE TABLE full_member
 AS SELECT m.*
   FROM member m
-  --WHERE ¡∂∞«¿˝¿ª ª˝∑´«œ∏È 
-  --«◊ªÛ ¬¸¿Œ ∞·∞˙øÕ µø¿œ«œπ«∑Œ ∏µÁ µ•¿Ã≈Õ∞° ∫πªÁµ«∏È ªı ≈◊¿Ã∫Ì ª˝º∫ 
-;§”
+  --WHERE Ï°∞Í±¥Ï†àÏùÑ ÏÉùÎûµÌïòÎ©¥ 
+  --Ìï≠ÏÉÅ Ï∞∏Ïù∏ Í≤∞Í≥ºÏôÄ ÎèôÏùºÌïòÎØÄÎ°ú Î™®Îì† Îç∞Ïù¥ÌÑ∞Í∞Ä Î≥µÏÇ¨ÎêòÎ©¥ ÏÉà ÌÖåÏù¥Î∏î ÏÉùÏÑ± 
+;„Ö£
 DROP TABLE march_member;
 DROP TABLE full_member;
 DROP TABLE new_member;
 
 --------------------------------------------------------------
---≈◊¿Ã∫Ì ºˆ¡§(ALTER)
+--ÌÖåÏù¥Î∏î ÏàòÏ†ï(ALTER)
 
---1)ƒ√∑≥ø° µ•¿Ã≈Õ∞° æ¯¿ª ∂ß
--- : ∏µÁ ∫Ø∞Êø° ¿⁄¿Ø∑ŒøÚ 
---   µ•¿Ã≈Õ ≈∏¿‘∫Ø∞Ê, µ•¿Ã≈Õ ≈©±‚∫Ø∞Êø° ∏µŒ ¿⁄¿Ø∑ŒøÚ 
+--1)Ïª¨ÎüºÏóê Îç∞Ïù¥ÌÑ∞Í∞Ä ÏóÜÏùÑ Îïå
+-- : Î™®Îì† Î≥ÄÍ≤ΩÏóê ÏûêÏú†Î°úÏõÄ 
+--   Îç∞Ïù¥ÌÑ∞ ÌÉÄÏûÖÎ≥ÄÍ≤Ω, Îç∞Ïù¥ÌÑ∞ ÌÅ¨Í∏∞Î≥ÄÍ≤ΩÏóê Î™®Îëê ÏûêÏú†Î°úÏõÄ 
 
---2) ƒ√∑≥ø° µ•¿Ã≈Õ∞° æ¯¿ª ∂ß
--- : µ•¿Ã≈Õ∞° º“Ω«µ«∏È æ»µ«π«∑Œ ∫Ø∞Êø° ¡¶æ‡¿Ã ¿÷¿Ω 
---   ≈∏¿‘ ∫Ø∞Ê¿∫ ∞∞¿∫ ≈∏¿‘≥ªø°º≠∏∏ ∞°¥… 
---   πÆ¿⁄ ≈∏¿‘∞£ø° CHAR ->VARCHAR2 ∫Ø∞Ê∞°¥…  
+--2) Ïª¨ÎüºÏóê Îç∞Ïù¥ÌÑ∞Í∞Ä ÏóÜÏùÑ Îïå
+-- : Îç∞Ïù¥ÌÑ∞Í∞Ä ÏÜåÏã§ÎêòÎ©¥ ÏïàÎêòÎØÄÎ°ú Î≥ÄÍ≤ΩÏóê Ï†úÏïΩÏù¥ ÏûàÏùå 
+--   ÌÉÄÏûÖ Î≥ÄÍ≤ΩÏùÄ Í∞ôÏùÄ ÌÉÄÏûÖÎÇ¥ÏóêÏÑúÎßå Í∞ÄÎä• 
+--   Î¨∏Ïûê ÌÉÄÏûÖÍ∞ÑÏóê CHAR ->VARCHAR2 Î≥ÄÍ≤ΩÍ∞ÄÎä•  
 
---   ≈©±‚ ∫Ø∞Ê¿∫ µø¿œ »§¿∫ ƒø¡ˆ¥¬ πÊ«‚¿∏∑Œ∏∏ ∞°¥… 
---   º˝¿⁄ ≈∏¿‘ ∫Ø∞Ê¿∫ ¡§π–µµ∞° ƒø¡ˆ¥¬ πÊ«‚¿∏∑Œ∏∏ ∞°¥… 
+--   ÌÅ¨Í∏∞ Î≥ÄÍ≤ΩÏùÄ ÎèôÏùº ÌòπÏùÄ Ïª§ÏßÄÎäî Î∞©Ìñ•ÏúºÎ°úÎßå Í∞ÄÎä• 
+--   Ïà´Ïûê ÌÉÄÏûÖ Î≥ÄÍ≤ΩÏùÄ Ï†ïÎ∞ÄÎèÑÍ∞Ä Ïª§ÏßÄÎäî Î∞©Ìñ•ÏúºÎ°úÎßå Í∞ÄÎä• 
 
---øπ)MARCH_MEMBER ≈◊¿Ã∫Ìø°º≠ 
---  µ•¿Ã≈Õ ≈∏¿‘¿« ≈©±‚∏¶ NUMBER(1)∑Œ ¡Ÿ¿Ã∏È 
+--Ïòà)MARCH_MEMBER ÌÖåÏù¥Î∏îÏóêÏÑú 
+--  Îç∞Ïù¥ÌÑ∞ ÌÉÄÏûÖÏùò ÌÅ¨Í∏∞Î•º NUMBER(1)Î°ú Ï§ÑÏù¥Î©¥ 
 ALTER TABLE MARCH_MEMBER MODIFY (BIRTH_MONTH NUMBER(1));
 /*
-ORA-01440: ¡§µµ ∂«¥¬ ¿⁄∏Æºˆ∏¶ √‡º“«“ ø≠¿∫ ∫ÒæÓ ¿÷æÓæﬂ «’¥œ¥Ÿ
+ORA-01440: Ï†ïÎèÑ ÎòêÎäî ÏûêÎ¶¨ÏàòÎ•º Ï∂ïÏÜåÌï† Ïó¥ÏùÄ ÎπÑÏñ¥ ÏûàÏñ¥Ïïº Ìï©ÎãàÎã§
 01440. 00000 -  "column to be modified must be empty to decrease precision or scale"
 */
---  º˝¿⁄µ•¿Ã≈Õ¿« ¡§π–µµ∞° ¡ı∞°«œ¥¬ ∞™¿∏∑Œ ∫Ø∞Ê«œ∏È 
---  2  ->  10¿⁄∏Æ, ±◊¡ﬂ º“ºˆ¡° 2¿⁄∏Æ 
+--  Ïà´ÏûêÎç∞Ïù¥ÌÑ∞Ïùò Ï†ïÎ∞ÄÎèÑÍ∞Ä Ï¶ùÍ∞ÄÌïòÎäî Í∞íÏúºÎ°ú Î≥ÄÍ≤ΩÌïòÎ©¥ 
+--  2  ->  10ÏûêÎ¶¨, Í∑∏Ï§ë ÏÜåÏàòÏ†ê 2ÏûêÎ¶¨ 
 ALTER TABLE MARCH_MEMBER MODIFY (BIRTH_MONTH NUMBER(10, 2));
--- Table MARCH_MEMBER¿Ã(∞°) ∫Ø∞Êµ«æ˙Ω¿¥œ¥Ÿ.
+-- Table MARCH_MEMBERÏù¥(Í∞Ä) Î≥ÄÍ≤ΩÎêòÏóàÏäµÎãàÎã§.
 
---º˝¿⁄ µ•¿Ã≈Õ¿Œ birth_month ƒ√∑≥¿ª πÆ¿⁄ µ•¿Ã≈Õ∑Œ ∫Ø∞Ê 
+--Ïà´Ïûê Îç∞Ïù¥ÌÑ∞Ïù∏ birth_month Ïª¨ÎüºÏùÑ Î¨∏Ïûê Îç∞Ïù¥ÌÑ∞Î°ú Î≥ÄÍ≤Ω 
 ALTER TABLE MARCH_MEMBER MODIFY (BIRTH_MONTH VARCHAR2(1) );
 /*
-ORA-01439: µ•¿Ã≈Õ ¿Ø«¸¿ª ∫Ø∞Ê«“ ø≠¿∫ ∫ÒæÓ ¿÷æÓæﬂ «’¥œ¥Ÿ
+ORA-01439: Îç∞Ïù¥ÌÑ∞ Ïú†ÌòïÏùÑ Î≥ÄÍ≤ΩÌï† Ïó¥ÏùÄ ÎπÑÏñ¥ ÏûàÏñ¥Ïïº Ìï©ÎãàÎã§
 01439. 00000 -  "column to be modified must be empty to change datatype"
 */
 
---MARCH_MEMBER ≈◊¿Ã∫Ì¿« ∏µÁ «‡ø° ¥Î«ÿº≠ 
---BIRTH_MONTH ƒ√∑≥¿« ∞™¿ª NULL µ•¿Ã≈Õ∑Œ ∫Ø∞Ê«œ¥¬ ∏Ì∑… 
+--MARCH_MEMBER ÌÖåÏù¥Î∏îÏùò Î™®Îì† ÌñâÏóê ÎåÄÌï¥ÏÑú 
+--BIRTH_MONTH Ïª¨ÎüºÏùò Í∞íÏùÑ NULL Îç∞Ïù¥ÌÑ∞Î°ú Î≥ÄÍ≤ΩÌïòÎäî Î™ÖÎ†π 
 UPDATE "SCOTT"."MARCH_MEMBER" 
   SET BIRTH_MONTH = ''
 ;
 COMMIT;
 ------------------------------------------------------------------
---3) ±‚∫ª ∞™(DEFAULT) º≥¡§¿∫ ºˆ¡§ ¿Ã»ƒ ∞™∫Œ≈Õ ¿˚øÎµ .
+--3) Í∏∞Î≥∏ Í∞í(DEFAULT) ÏÑ§Ï†ïÏùÄ ÏàòÏ†ï Ïù¥ÌõÑ Í∞íÎ∂ÄÌÑ∞ Ï†ÅÏö©Îê®.
 
---øπ) 3ø˘ª˝¿Œ ∏‚πˆ∏∏ ∫πªÁ«— MARCH_MEMBER≈◊¿Ã∫Ì¿ª ª˝∞¢«ÿ∫∏¿⁄ 
+--Ïòà) 3ÏõîÏÉùÏù∏ Î©§Î≤ÑÎßå Î≥µÏÇ¨Ìïú MARCH_MEMBERÌÖåÏù¥Î∏îÏùÑ ÏÉùÍ∞ÅÌï¥Î≥¥Ïûê 
 INSERT INTO "SCOTT"."MARCH_MEMBER" (MEMBER_ID, MEMBER_NAME, PHONE, ADDRESS, MAJOR, BIRTH_MONTH, GENDER) 
-VALUES ('M006', '«‘øπ¿∫', '0432', 'ºˆø¯Ω√', 'ƒƒ∞¯', '3', 'F');
+VALUES ('M006', 'Ìï®ÏòàÏùÄ', '0432', 'ÏàòÏõêÏãú', 'Ïª¥Í≥µ', '3', 'F');
 COMMIT;
 
---b) a¿« ∏‚πˆ ¡§∫∏ √ﬂ∞° »ƒ DEFAULT º≥¡§ √ﬂ∞° 
+--b) aÏùò Î©§Î≤Ñ Ï†ïÎ≥¥ Ï∂îÍ∞Ä ÌõÑ DEFAULT ÏÑ§Ï†ï Ï∂îÍ∞Ä 
 ALTER TABLE march_member MODIFY (birth_month DEFAULT 3);
---table MARCH_MEMBER¿Ã(∞°) ∫Ø∞Êµ«æ˙Ω¿¥œ¥Ÿ.
+--table MARCH_MEMBERÏù¥(Í∞Ä) Î≥ÄÍ≤ΩÎêòÏóàÏäµÎãàÎã§.
 
---c) MARCH_MEMBER ≈◊¿Ã∫Ìø° DEFAULT
---ªı ∏‚πˆ √ﬂ∞° 
+--c) MARCH_MEMBER ÌÖåÏù¥Î∏îÏóê DEFAULT
+--ÏÉà Î©§Î≤Ñ Ï∂îÍ∞Ä 
 INSERT INTO "SCOTT"."MARCH_MEMBER" (MEMBER_ID, MEMBER_NAME, ADDRESS, MAJOR, GENDER) 
-VALUES ('M007', '»´±Êµø ', '¿≤µµ±π', 'µµº˙', 'M');
+VALUES ('M007', 'ÌôçÍ∏∏Îèô ', 'Ïú®ÎèÑÍµ≠', 'ÎèÑÏà†', 'M');
 COMMIT;
 /*
-6∞≥ «‡ ¿Ã(∞°) æ˜µ•¿Ã∆Æµ«æ˙Ω¿¥œ¥Ÿ.
+6Í∞ú Ìñâ Ïù¥(Í∞Ä) ÏóÖÎç∞Ïù¥Ìä∏ÎêòÏóàÏäµÎãàÎã§.
 
-ƒøπ‘ øœ∑·.
+Ïª§Î∞ã ÏôÑÎ£å.
 */
---µ•¿Ã≈Õ∞° æ¯¥¬ ƒ√∑≥¿∏∑Œ ∫Ø∞Ê »ƒ 
---VARCHAR2(2) πÆ¿⁄ƒ√∑≥¿∏∑Œ ∫Ø∞Ê 
+--Îç∞Ïù¥ÌÑ∞Í∞Ä ÏóÜÎäî Ïª¨ÎüºÏúºÎ°ú Î≥ÄÍ≤Ω ÌõÑ 
+--VARCHAR2(2) Î¨∏ÏûêÏª¨ÎüºÏúºÎ°ú Î≥ÄÍ≤Ω 
 ALTER TABLE MARCH_MEMBER MODIFY (BIRTH_MONTH VARCHAR2(2) );
---Table MARCH_MEMBER¿Ã(∞°) ∫Ø∞Êµ«æ˙Ω¿¥œ¥Ÿ.
+--Table MARCH_MEMBERÏù¥(Í∞Ä) Î≥ÄÍ≤ΩÎêòÏóàÏäµÎãàÎã§.
 ALTER TABLE MARCH_MEMBER MODIFY (BIRTH_MONTH NUMBER(1) );
 ------------------------------------------------------------------------------------
---≈◊¿Ã∫Ì π´∞·º∫ ¡¶æ‡ ¡∂∞« √≥∏ÆπÊπ˝ 4∞°¡ˆ 
+--ÌÖåÏù¥Î∏î Î¨¥Í≤∞ÏÑ± Ï†úÏïΩ Ï°∞Í±¥ Ï≤òÎ¶¨Î∞©Î≤ï 4Í∞ÄÏßÄ 
 
 /*
     MAIN_TABLE 
@@ -384,7 +384,7 @@ ALTER TABLE MARCH_MEMBER MODIFY (BIRTH_MONTH NUMBER(1) );
     BIRTH_YEAR NUMBER(4)
     ----------------------------------------------------------------------------------
 */
-----1.ƒ√∑≥ ¡§¿««“ ∂ß, ¡¶æ‡ ¡∂∞« ¿Ã∏ß æ¯¿Ã πŸ∑Œ º±æ 
+----1.Ïª¨Îüº Ï†ïÏùòÌï† Îïå, Ï†úÏïΩ Ï°∞Í±¥ Ïù¥Î¶Ñ ÏóÜÏù¥ Î∞îÎ°ú ÏÑ†Ïñ∏ 
 
 DROP TABLE MAIN_TABLE1;
 CREATE TABLE MAIN_TABLE1
@@ -440,10 +440,10 @@ CREATE TABLE MAIN_TABLE3
 , CONSTRAINT PK_SUB3 PRIMARY KEY (ID, BIRTH_YEAR)
 );
 
---√ﬂ∞° ∞˙¡¶ 
---Ω«Ω¿ 10)
-/* ºº ∞≥¿« ≈◊¿Ã∫Ì ª˝º∫«œ¥¬ ±∏πÆ ¿€º∫
- 3π¯ πÊΩƒ¿∏∑Œ ¿€º∫ 
+--Ï∂îÍ∞Ä Í≥ºÏ†ú 
+--Ïã§Ïäµ 10)
+/* ÏÑ∏ Í∞úÏùò ÌÖåÏù¥Î∏î ÏÉùÏÑ±ÌïòÎäî Íµ¨Î¨∏ ÏûëÏÑ±
+ 3Î≤à Î∞©ÏãùÏúºÎ°ú ÏûëÏÑ± 
  GAME 
  
  GAME_CODE  NUMBER(2) PRIMARY KEY  --10,20,30
@@ -452,20 +452,20 @@ CREATE TABLE MAIN_TABLE3
  ----------------------------------------------------
   GMEMBER 
   
-  ID        VARCHAR2(4)   PRIMARY KEY --»∏ø¯¿« æ∆¿Ãµ M001, M002 
-  NAME      VARCHAR2(15)  NOT NULL    --»∏ø¯¿« ¿Ã∏ß 
+  ID        VARCHAR2(4)   PRIMARY KEY --ÌöåÏõêÏùò ÏïÑÏù¥Îîî M001, M002 
+  NAME      VARCHAR2(15)  NOT NULL    --ÌöåÏõêÏùò Ïù¥Î¶Ñ 
   
  ----------------------------------------------------
  MEMBER_GAME_HISTORY
  
- ID         VARCHAR2(4)   FKº≥¡§, FK¿Ã∏ß : FK_ID
-                          GMEMBER ≈◊¿Ã∫Ì¿« ID ƒ√∑≥¿ª ¬¸¡∂«œµµ∑œ º≥¡§ 
- YEAR       NUMBER(2)     --∞‘¿”¿ª «— ≥‚µµ 
- GAME_CODE  NUMBER(2)     FK º≥¡§, FK ¿Ã∏ß : FK_GAME_CODE
-                          GAME ≈◊¿Ã∫Ì¿« GAME_CODE ƒ√∑≥¿ª ¬¸¡∂«œµµ∑œ º≥¡§ 
+ ID         VARCHAR2(4)   FKÏÑ§Ï†ï, FKÏù¥Î¶Ñ : FK_ID
+                          GMEMBER ÌÖåÏù¥Î∏îÏùò ID Ïª¨ÎüºÏùÑ Ï∞∏Ï°∞ÌïòÎèÑÎ°ù ÏÑ§Ï†ï 
+ YEAR       NUMBER(2)     --Í≤åÏûÑÏùÑ Ìïú ÎÖÑÎèÑ 
+ GAME_CODE  NUMBER(2)     FK ÏÑ§Ï†ï, FK Ïù¥Î¶Ñ : FK_GAME_CODE
+                          GAME ÌÖåÏù¥Î∏îÏùò GAME_CODE Ïª¨ÎüºÏùÑ Ï∞∏Ï°∞ÌïòÎèÑÎ°ù ÏÑ§Ï†ï 
                           
  ----------------------------------------------------
- -->JOIN QUERY ¿€º∫ 
+ -->JOIN QUERY ÏûëÏÑ± 
  
 */
 
@@ -482,13 +482,6 @@ CREATE TABLE GMEMBER
   , NAME VARCHAR2(15)   NOT NULL
   , CONSTRAINT PK_ID_GMEMBER PRIMARY KEY(ID)
 );
-/*
-M001	º≠∞°øµ	2010	10
-M001	º≠∞°øµ	2011	20
-M002	±Ë¿∫º± 	2011	30
-M002	±Ë¿∫º± 	2013	10
-*/
-
 
 CREATE TABLE MEMBER_GAME_HISTORY
 (
@@ -506,4 +499,10 @@ SELECT h.id
   FROM game g JOIN member_game_history h ON (g.game_code = h.game_code)
               JOIN gmember m             ON (m.id = h.id)
 ;
+/*
+M001	ÏÑúÍ∞ÄÏòÅ	2010	10
+M001	ÏÑúÍ∞ÄÏòÅ	2011	20
+M002	ÍπÄÏùÄÏÑ† 	2011	30
+M002	ÍπÄÏùÄÏÑ† 	2013	10
+*/
  
