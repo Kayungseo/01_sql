@@ -439,3 +439,33 @@ CREATE TABLE MAIN_TABLE3
 , BIRTH_YEAR NUMBER(4)  
 , CONSTRAINT PK_SUB3 PRIMARY KEY (ID, BIRTH_YEAR)
 );
+
+--추가 과제 
+--실습 10)
+/* 세 개의 테이블 생성하는 구문 작성
+ 3번 방식으로 작성 
+ GAME 
+ 
+ GAME_CODE  NUMBER(2) PRIMARY KEY  --10,20,30
+ GAME_NAME  VARCHAR2(200) NOT NULL
+ 
+ ----------------------------------------------------
+  GMEMBER 
+  ID        VARCHAR2(4)   PRIMARY KEY --회원의 아이디 M001, M002 
+  NAME      VARCHAR2(15)  NOT NULL    --회원의 이름 
+  
+ ----------------------------------------------------
+ MEMBER_GAME_HISTORY
+ ID         VARCHAR2(4)   FK설정, FK이름 : FK_ID
+                          GMEMBER 테이블의 ID 컬럼을 참조하도록 설정 
+ YEAR       NUMBER(2)     --게임을 한 년도 
+ GAME_CODE  NUMBER(2)     FK 설정, FK 이름 : FK_GAME_CODE
+                          GAME 테이블의 GAME_CODE 컬럼을 참조하도록 설정 
+                          
+ ----------------------------------------------------
+ -->JOIN QUERY 작성 
+
+ 
+ 
+ 
+ 
