@@ -13,11 +13,13 @@ ALTER SESSION
 SELECT DISTINCT job_id
   FROM employees e
 ;
+
 --2)manageer는 몇명인가? 
 SELECT COUNT(DISTINCT manager_id)
   FROM employees e
  ORDER BY manager_id
 ;
+
 --3)부서번호가 가장 큰 부서는 어디인가?
 SELECT DISTINCT e.department_id
      , d.department_name
@@ -102,6 +104,7 @@ SELECT e.first_name
   FROM employees e 
  WHERE commission_pct IS NOT NULL 
 ;
+
 --2)최소 5000 이상의 급여를 받는 부서 id 목록을 뽑으시오
 --job id, min salary
 SELECT j.job_id
@@ -109,6 +112,7 @@ SELECT j.job_id
   FROM jobs j
  WHERE min_salary > 5000
 ;
+
 --3)입사일이 2007년 이후이거나 급여가 3000 이하인 직원의 목룍을 뽑으시오 
 --employee_id, first_name, last_name, 입사일, 급여
 SELECT e.employee_id
@@ -127,23 +131,6 @@ SELECT e.employee_Id
   FROM employees e 
  WHERE e.salary <= 3000 
 ; 
-
-SELECT e.employee_id
-     , e.first_name
-     , e.last_name
-     , e.hire_date
-     , e.salary
-  FROM employees e 
- WHERE TO_CHAR(e.hire_date, 'YY') >= '07'
-INTERSECT
-SELECT e.employee_Id
-     , e.first_name
-     , e.last_name
-     , e.hire_date
-     , e.salary
-  FROM employees e 
- WHERE e.salary <= 3000 
-;
 
 --6. 단일행 함수
 --1)CASE / 부서 인원 수에 따라 회식비가 다르다고 한다. 
@@ -249,8 +236,24 @@ SELECT w.manager_id
                      FROM employees e JOIN employees e1 ON e.manager_id = e1.employee_id)
 ;
 
---2)
-
+--2)직업 중 시작되지 않았지만 최소 급여가 가장 높은 직업?
+SELECT j.job_title
+     , h.start_date
+     , j.min_salary
+  FROM jobs j LEFT JOIN job_history h ON (j.job_id=h.job_id) 
+ WHERE h.start_date IS NULL
+;
+SELECT n.job_title
+     , MIN(n.min_salary)
+  FROM (SELECT j.job_title
+             , h.start_date
+            , j.min_salary
+        FROM jobs j LEFT JOIN job_history h ON (j.job_id=h.job_id) 
+       WHERE h.start_date IS NULL) n
+ GROUP BY n.job_title
+        , n.start_date
+--모르겠다./ 
+;
 --3)
 
 

@@ -482,12 +482,6 @@ CREATE TABLE GMEMBER
   , NAME VARCHAR2(15)   NOT NULL
   , CONSTRAINT PK_ID_GMEMBER PRIMARY KEY(ID)
 );
-/*
-M001	서가영	2010	10
-M001	서가영	2011	20
-M002	김은선 	2011	30
-M002	김은선 	2013	10
-*/
 
 
 CREATE TABLE MEMBER_GAME_HISTORY
@@ -506,4 +500,9 @@ SELECT h.id
   FROM game g JOIN member_game_history h ON (g.game_code = h.game_code)
               JOIN gmember m             ON (m.id = h.id)
 ;
- 
+/*
+M001	서가영	2010	10
+M001	서가영	2011	20
+M002	김은선 	2011	30
+M002	김은선 	2013	10
+*/
