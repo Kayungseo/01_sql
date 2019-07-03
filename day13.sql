@@ -633,8 +633,3 @@ UPDATE member m
  WHERE m.member_id = 'M009'
  ;
 
-UPDATE member m
-   SET m.phone = '3581'
- WHERE m.member_id = 'M009'
-   AND m.phone IS NULL
-;
